@@ -3,7 +3,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import EditIcon from '@mui/icons-material/Edit';
 
-// import { Buffer } from "buffer";
+import { Buffer } from "buffer";
 import Workeredit from './Workeredit';
 
 const Workerdetails = () => {
@@ -34,6 +34,7 @@ const Workerdetails = () => {
             <TableCell>job</TableCell>
             <TableCell>experience</TableCell> 
             <TableCell>location</TableCell>
+            <TableCell>photo</TableCell>
             
           </TableRow>
         </TableHead>
@@ -50,8 +51,10 @@ const Workerdetails = () => {
               <TableCell>{row.job}</TableCell>
               <TableCell>{row.experience}</TableCell>
               <TableCell>{row.location}</TableCell>
-              {/* <TableCell><img src={`data:image/jpeg;base64,${Buffer.from(row.image1.data).toString('base64')}`} width="50" height="50" alt="no image"/></TableCell> */}
-              <TableCell><EditIcon onClick={()=>updateValue(row)}></EditIcon></TableCell>
+              <TableCell>
+              <img src={`data:image/jpeg;base64,${Buffer.from(row.image1.data).toString('base64')}`} width="50" height="50" alt="Error" />
+              </TableCell>
+               <TableCell> <EditIcon onClick={()=>updateValue(row)}></EditIcon></TableCell>
             </TableRow>
           
           ))}
