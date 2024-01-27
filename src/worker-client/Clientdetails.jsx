@@ -31,6 +31,7 @@ return (
           
             <TableCell>location</TableCell>
             <TableCell>photo</TableCell>
+           
             
           </TableRow>
         </TableHead>
