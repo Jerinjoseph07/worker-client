@@ -21,7 +21,7 @@ password: inputs.password,
 })
 if (response.data.success) {
 alert('Login successful');
-navigate('/ViewDetails');
+navigate('/user');
 } 
 else {
 alert('Invalid email and Password. Please try again.');

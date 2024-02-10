@@ -2,9 +2,11 @@ import {  Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRo
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import { Buffer } from "buffer";
 import Workeredit from './Workeredit';
+
 
 const Workerdetails = () => {
   var[selected,setSelected]=useState();
@@ -24,6 +26,15 @@ const Workerdetails = () => {
       setSelected(row);
       setUpdate(true);
     }
+
+    const deleteValue=(id)=>{
+      console.log("deleted",id)
+      axios.delete("http://localhost:3005/removeworker/"+id)
+      .then((response)=>{
+      alert("Deleted")
+      //to reload window
+      window.location.reload(false);
+      })}
   
 
     
@@ -41,6 +52,7 @@ const Workerdetails = () => {
             <TableCell>location</TableCell>
             <TableCell>photo</TableCell>
             <TableCell>Edit</TableCell>
+            <TableCell>Delete</TableCell>
             
             
           </TableRow>
@@ -62,7 +74,7 @@ const Workerdetails = () => {
               <img src={`data:image/jpeg;base64,${Buffer.from(row.image1.data).toString('base64')}`} width="50" height="50" alt="Error" />
               </TableCell>
                <TableCell> <EditIcon onClick={()=>updateValue(row)}></EditIcon></TableCell>
-              
+              <TableCell> <DeleteIcon onClick={()=>deleteValue(row._id)}></DeleteIcon></TableCell>
             </TableRow>
             )
             })}
